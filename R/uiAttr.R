@@ -71,7 +71,8 @@ createUIAttr <- function(All.Data, GWSDAT_Options) {
   ui_attr$timepoint_tt <- ui_attr$timepoints[length(ui_attr$timepoints)]
   ui_attr$timepoint_tt_idx <- length(ui_attr$timepoints)
     
-  ui_attr$contour_types <- c("Conc-Terrain", "Conc-Topo","Conc-GreyScale","Conc-Terrain-Circles","Conc-Topo-Circles","Conc-GreyScale-Circles", if (!is.null(All.Data$NAPL.Thickness.Data)) {"NAPL-Circles"})  
+  ui_attr$contour_types <- c("Conc-Terrain", "Conc-Topo", "Conc-Viridis",
+                             "Conc-GreyScale","Conc-Terrain-Circles","Conc-Topo-Circles","Conc-GreyScale-Circles", if (!is.null(All.Data$NAPL.Thickness.Data)) {"NAPL-Circles"})  
   ui_attr$contour_selected <- ui_attr$contour_types[1]
   
   spatial_options <-  NULL
