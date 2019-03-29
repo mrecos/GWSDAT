@@ -48,7 +48,6 @@ plotSpatialImage_main <- function(csite, substance = " ", timepoint = NULL,
     op <- par(mar = c(2,4.1,2,2.1))
   }
 
-  
   Col.Option <- csite$ui_attr$spatial_options["Scale colours to Data"]
   Show.Values <- csite$ui_attr$spatial_options["Show Conc. Values"]
   Show.GW.Contour <- csite$ui_attr$spatial_options["Show GW Contour"]
@@ -150,7 +149,19 @@ plotSpatialImage_main <- function(csite, substance = " ", timepoint = NULL,
   GWSDAT.Terrain <- function(n) {
     terrain.colors(n + 1)[1:n] # to avoid white in extreme concentrations
   }
-   
+
+  #MDH
+  GWSDAT.Viridis <- function(n) {
+    viridisLite::viridis(n, direction = -1)
+  }
+  if(csite$ui_attr$contour_selected == "Conc-Viridis" & Col.Option){
+    col.palette <- GWSDAT.Viridis
+  }
+  if(csite$ui_attr$contour_selected == "Conc-Viridis" & !Col.Option){
+    col.palette <- GWSDAT.Viridis(n.col)
+  }
+  
+  
   if(csite$ui_attr$contour_selected == "Conc-Terrain" & Col.Option){
     col.palette <- terrain.colors
   }
